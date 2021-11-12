@@ -11,7 +11,10 @@ import SwiftUI
 struct TradingCardAssignmentApp: App {
     var body: some Scene {
         WindowGroup {
-            DetailView()
+            NavigationView{
+                PlayerListView()
+            }
+            
         }
     }
 }

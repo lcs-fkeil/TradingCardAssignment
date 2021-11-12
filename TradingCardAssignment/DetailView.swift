@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct DetailView: View {
+    
+    //MARK: Stored properties
+    let item: PlayerCard
+    
     var body: some View {
         ScrollView{
             VStack {
@@ -35,12 +39,12 @@ struct DetailView: View {
                     //Layer 4
                     VStack {
                         //Layer 1
-                        Text("Manuel Neuer")
+                        Text(item.playerName)
                             .font(Font.custom("Helvetica Neue", size: 40))
                         //Layer 2
                         ZStack{
                             //Layer 1
-                            Image("ManuelNeuer")
+                            Image(item.playerImage)
                                 .resizable()
                                 .scaledToFit()
                                 .border(Color.black, width: 40)
@@ -52,7 +56,7 @@ struct DetailView: View {
                                 //Layer 1
                                 HStack {
                                     //Layer 1
-                                    Text("1")
+                                    Text(item.playerNumber)
                                         .foregroundColor(.white)
                                         .font(Font.custom("Helvetica Neue", size:75))
                                         .padding(.leading, 75)
@@ -89,13 +93,13 @@ struct DetailView: View {
                         
                         VStack(alignment: .leading){
                             //Layer 1
-                            Text("Age: 35")
+                            Text(item.playerAge)
                             //Layer 2
-                            Text("Team: FC Bayern München")
+                            Text(item.playerTeam)
                             //Layer 3
-                            Text("Position: Goalkeeper")
+                            Text(item.playerPosition)
                             //Layer 4
-                            Text("Games 2014: 7")
+                            Text(item.playerGames)
                         }
                         
                     }
@@ -124,7 +128,7 @@ struct DetailView: View {
                         Spacer()
                     }
                     //Layer 4
-                    Text("Manuel Peter Neuer, born 27 March 1986, is a German professional footballer who plays as a goalkeeper and captains both Bundesliga club Bayern Munich and the Germany national team. He is regarded as one of the greatest goalkeepers in the history of the sport.")
+                    Text(item.playerInfo)
                         .frame(width: 300)
                         .padding(.top, 60)
                 }
@@ -142,7 +146,7 @@ struct DetailView: View {
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView{
-            DetailView()
+            DetailView(item: listOfItem.first!)
             
         }
     }
